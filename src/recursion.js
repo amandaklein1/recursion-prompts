@@ -7,20 +7,65 @@
 // Example: 5! = 5 x 4 x 3 x 2 x 1 = 120
 // factorial(5); // 120
 var factorial = function(n) {
+  if (n < 0) {
+    return null;
+  }
+
+  if (n === 0) {
+    return 1;
+  }
+
+  return (n * factorial(n - 1));
 };
 
 // 2. Compute the sum of an array of integers.
 // sum([1,2,3,4,5,6]); // 21
 var sum = function(array) {
+  var total = 0;
+
+  if (!Array.isArray(array)) {
+    return array;
+  }
+
+  array.forEach(function(item) {
+    total += sum(item);
+  });
+
+  return total;
+
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
+  var total = 0;
+
+  if (!Array.isArray(array)) {
+    return array;
+  }
+
+  array.forEach(function(item) {
+    total += arraySum(item);
+  });
+
+  return total;
 };
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+  var num = Math.abs(n);
+
+  if (num === 1) {
+    return false;
+  }
+
+  if (num >= 2) {
+    return isEven(num - 2);
+
+  }
+
+  return true;
+
 };
 
 // 5. Sum all integers below a given integer.
